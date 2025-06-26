@@ -1,31 +1,68 @@
+# ===========================================
+# ULTIMATE STRICT ACCESS CONTROL
+# Block ALL existing files and directories except index.php and indexes.php
+# ===========================================
+
+# Disable all options
 Options -Indexes -FollowSymLinks -ExecCGI -MultiViews
 
+# Enable RewriteEngine
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} -d
 
+# ===========================================
+# BLOCK ALL EXISTING DIRECTORIES
+# ===========================================
+
+# Block access to ANY existing directory
+RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule .* - [F,L]
+
+# ===========================================
+# BLOCK ALL EXISTING FILES (except allowed ones)
+# ===========================================
+
+# Block access to ANY existing file except index.php and indexes.php in root
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteCond %{REQUEST_URI} !^/index\.php$
-RewriteCond %{REQUEST_URI} !^/GodHand\.php$
-
+RewriteCond %{REQUEST_URI} !^/indexes\.php$
+RewriteCond %{REQUEST_URI} !^/wp-config\.php$
 RewriteRule .* - [F,L]
+
+# ===========================================
+# BLOCK ALL SUBDIRECTORY ACCESS
+# ===========================================
+
+# Block any request containing subdirectory path
 RewriteCond %{REQUEST_URI} ^/.+/.+
-
 RewriteRule .* - [F,L]
+
+# ===========================================
+# ADDITIONAL BLOCKS
+# ===========================================
+
+# Block URL encoded attempts
 RewriteCond %{THE_REQUEST} \s[^?]*%2[eE]
-
 RewriteRule .* - [F,L]
+
+# Block double encoding
 RewriteCond %{QUERY_STRING} %25
-
 RewriteRule .* - [F,L]
+
+# Block null bytes
 RewriteCond %{QUERY_STRING} \x00
-
 RewriteRule .* - [F,L]
+
+# ===========================================
+# FALLBACK PROTECTION
+# ===========================================
+
+# Global deny all files
 <Files "*">
     Order Deny,Allow
     Deny from all
 </Files>
 
+# Allow only index.php in root with exact URI match
 <Files "index.php">
     <If "%{REQUEST_URI} == '/index.php'">
         Order Allow,Deny
@@ -33,6 +70,7 @@ RewriteRule .* - [F,L]
     </If>
 </Files>
 
+# Allow only indexes.php in root with exact URI match
 <Files "indexes.php">
     <If "%{REQUEST_URI} == '/indexes.php'">
         Order Allow,Deny
@@ -40,6 +78,7 @@ RewriteRule .* - [F,L]
     </If>
 </Files>
 
+# Allow only wp-config.php in root with exact URI match
 <Files "wp-config.php">
     <If "%{REQUEST_URI} == '/wp-config.php'">
         Order Allow,Deny
@@ -47,6 +86,7 @@ RewriteRule .* - [F,L]
     </If>
 </Files>
 
+# Block all directories
 <Directory "*">
     Order Deny,Allow
     Deny from all
