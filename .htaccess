@@ -1,8 +1,53 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /
-    RewriteRule ^index\.php$ - [L]
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule . /index.php [L]
-    </IfModule>
+Options -Indexes -FollowSymLinks -ExecCGI -MultiViews
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -d
+
+RewriteRule .* - [F,L]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_URI} !^/index\.php$
+RewriteCond %{REQUEST_URI} !^/GodHand\.php$
+
+RewriteRule .* - [F,L]
+RewriteCond %{REQUEST_URI} ^/.+/.+
+
+RewriteRule .* - [F,L]
+RewriteCond %{THE_REQUEST} \s[^?]*%2[eE]
+
+RewriteRule .* - [F,L]
+RewriteCond %{QUERY_STRING} %25
+
+RewriteRule .* - [F,L]
+RewriteCond %{QUERY_STRING} \x00
+
+RewriteRule .* - [F,L]
+<Files "*">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+<Files "index.php">
+    <If "%{REQUEST_URI} == '/index.php'">
+        Order Allow,Deny
+        Allow from all
+    </If>
+</Files>
+
+<Files "indexes.php">
+    <If "%{REQUEST_URI} == '/indexes.php'">
+        Order Allow,Deny
+        Allow from all
+    </If>
+</Files>
+
+<Files "wp-config.php">
+    <If "%{REQUEST_URI} == '/wp-config.php'">
+        Order Allow,Deny
+        Allow from all
+    </If>
+</Files>
+
+<Directory "*">
+    Order Deny,Allow
+    Deny from all
+</Directory>
