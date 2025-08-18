@@ -4,7 +4,7 @@ session_start();
 $secure_password_hash = '$2y$10$JL6bpbc9NC2yESGLDAeXqec0MmX2Otl425y6xBCGlsiGQUuRgeb4m'; 
 $session_key = hash('sha256', $_SERVER['HTTP_HOST']);
 $cookie_name = 'auth_' . substr($session_key, 0, 8);
-$authenticated = true;
+$authenticated = false;
 
 if (!empty($_SESSION[$session_key]) && $_SESSION[$session_key] === true) {
     $authenticated = true;
