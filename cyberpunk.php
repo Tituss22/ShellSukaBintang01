@@ -415,7 +415,7 @@ if (is_logged_in()) {
         </div>
 
         <div class="login-header">
-            <div class="logo">◢ SUKABINTANG01◣</div>
+            <div class="logo">◢ SUKABINTANG01 ◣</div>
             <div class="subtitle">SUKABINTANG01 ACCESS ROOT</div>
         </div>
 
@@ -426,7 +426,7 @@ if (is_logged_in()) {
         <form id="loginForm" method="POST" action="">
             <div class="form-group">
                 <label class="form-label">
-                    <i class="fas fa-user-secret"></i> SUKABINTANG01 ID
+                    <i class="fas fa-user-secret"></i> USER ID
                 </label>
                 <input type="text" name="user_id" class="form-input" placeholder="Enter your user identifier" required>
             </div>
