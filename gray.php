@@ -239,7 +239,7 @@ if ($use_auth) {
                             </div>
                         </div>
                         <div class="footer text-center">
-                            <a>&copy;pwnsauce</a>
+                            <a>&copy;SukaBintang01</a>
                         </div>
                     </div>
                 </div>
@@ -1856,9 +1856,9 @@ $tableTheme = (FM_THEME == "dark") ? "text-white bg-dark table-dark" : "bg-white
                     <a href="javascript:document.getElementById('a-copy').click();" class="btn btn-small btn-outline-primary btn-2"><i class="fa fa-files-o"></i> <?php echo lng('Copy') ?> </a></li>
             </ul>
         </div>
-        <div class="col-3 d-none d-sm-block"><a class="float-right text-muted">&copy;pwnsauce</a></div>
+        <div class="col-3 d-none d-sm-block"><a class="float-right text-muted">&copy;SukaBintang01</a></div>
         <?PHp else: ?>
-        <div class="col-3 d-none d-sm-block"><a class="float-right text-muted">&copy;pwnsauce</a></div>
+        <div class="col-3 d-none d-sm-block"><a class="float-right text-muted">&copy;SukaBintang01</a></div>
         <?PHp endif; ?>
     </div>
 </form>
