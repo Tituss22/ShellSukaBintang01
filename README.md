@@ -1,0 +1,11 @@
+| File                  | Username                  | Password                  |
+| :-------------------- | :------------------------ | :------------------------ |
+| `SukaBintang01.php`   | `GarudaSecurityTeam`      | `SukaBintang01`           |
+| `Tres.php`            | `-`                       | `SukaBintang01`           |
+| `cyberpunk.php`       | `SukaBintang01`           | `SukaBintang01`           |
+| `gray.php`            | `GarudaSecurity`          | `SukaBintang01`           |
+| `j3mbut.php`          | `-`                       | `SukaBintang01`           |
+| `menkrep1337.php`     | `-`                       | `SukaBintang01`           |
+| `minecraft.php`       | `-`                       | `SukaBintang01`           |
+| `original.php`        | `SukaBintang01`           | `SukaBintang01`           |
+| `wso.php`             | `-`                       | `SukaBintang01`           |
