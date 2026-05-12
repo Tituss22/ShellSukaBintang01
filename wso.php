@@ -1136,7 +1136,7 @@ echo '<input type="hidden" name="charset">
 <tr>
 <td><span class="header_vars">User:</span></td>
 <td><span class="header_values" id="header_userid">'. $uid . ' [ ' . $user . ' ] </span><span class="header_vars"> Group: </span><span class="header_values" id="header_groupid">' . $gid . ' [ ' . $group . ' ]</span> </td>
-<td width="12%" rowspan="8"><img style="border-radius:100px;" width="200" height="170" alt="garsec team 2012" draggable="false" src="https://k.top4top.io/p_33076980l1.png" /></td>
+<td width="12%" rowspan="8"><img style="border-radius:100px;" width="200" height="170" alt="garsec team 2012" draggable="false" src="https://i.postimg.cc/Y9WBNWbT/logoskb.png" /></td>
 </tr>
 <tr>
 <td><span class="header_vars">PHP:</span></td>
