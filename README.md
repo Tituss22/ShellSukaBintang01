@@ -1,49 +1,51 @@
-# 🔬 Project ShellSukaBintang01: Webshell Framework Analysis
+# 💀 ShellSukaBintang01: Web Persistence & Remote Access Archive
 
 ![Category](https://img.shields.io/badge/Category-Cybersecurity%20Research-blue?style=for-the-badge)
-![Target](https://img.shields.io/badge/Focus-Malware%20Analysis%20%26%20Detection-red?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Educational%20Reference-green?style=for-the-badge)
+![Language](https://img.shields.io/badge/Language-PHP%20%7C%20Bash%20%7C%20.htaccess-777bb4?style=for-the-badge)
+![Scope](https://img.shields.io/badge/Focus-Backdoor%20%26%20Reverse%20Shell%20Analysis-red?style=for-the-badge)
 
-Repositori `ShellSukaBintang01` didedikasikan sebagai referensi studi kasus mengenai mekanisme kerja, teknik penyamaran (*obfuscation*), dan pola deteksi terhadap ancaman berbasis **Webshell** dan **Backdoor Shell** pada lingkungan server berbasis PHP.
+Repositori ini merupakan pustaka referensi dan arsip studi kasus mengenai berbagai varian **Webshell**, **Reverse Shell**, **Symlink Tool**, dan mekanisme **Bypass Server Security**. Proyek ini ditujukan untuk memetakan arsitektur kendali jarak jauh (remote access) dan taktik persistensi malware pada server web.
 
 > [!WARNING]
-> **Tujuan Edukasi & Penelitian:** Materi dalam repositori ini disediakan murni untuk tujuan pembelajaran, pemodelan ancaman (*threat modeling*), dan pengembangan sistem pertahanan web. Penyalahgunaan kode untuk aktivitas ilegal di luar lingkungan laboratorium terisolasi sepenuhnya berada di luar tanggung jawab pengembang.
+> **DISCLAIMER & KETENTUAN HUKUM:** Semua file di dalam repositori ini disediakan eksklusif untuk tujuan edukasi, penelitian forensik digital, analisis malware, dan pengujian penetrasi resmi (*authorized pentesting*). Penyalahgunaan aset kode ini untuk aktivitas ilegal tanpa izin tertulis dari pemilik sistem adalah pelanggaran hukum berat dan sepenuhnya di luar tanggung jawab pengembang.
 
 ---
 
-## 📖 Latar Belakang & Konseptual
+## 📂 Struktur Arsip & Komponen Analisis
 
-Webshell merupakan salah satu vektor persistensi yang sering digunakan oleh aktor ancaman setelah berhasil mengeksploitasi kerentanan aplikasi web (seperti celah *File Upload* atau kerentanan komponen pihak ketiga). 
+Berdasarkan modul-modul yang tersedia di dalam repositori ini, berikut adalah pemetaan fungsionalitas komponen untuk keperluan analisis keamanan:
 
-Proyek penelitian ini berfokus pada analisis perilaku struktur shell modern, termasuk:
-* **Dynamic Control Flow:** Bagaimana skrip mengeksekusi instruksi jarak jauh melalui pemanggilan variabel secara modular.
-* **Payload Masking:** Studi kasus mengenai teknik pengodean string (Heksadesimal, ASCII Array, Base64) yang digunakan untuk mengelabui pembacaan teks otomatis (*Signature-based Antivirus*).
-* **Remote Callback Mechanisms:** Analisis terhadap arsitektur *bridge script* yang memisahkan antara modul input lokal dengan konfigurasi eksternal (seperti GitHub API atau Webhook).
+### 1. Web Core & Execution Interfaces
+* **`SukaBintang01.php` / `original.php`**: Core interface webshell yang menyediakan kendali panel, manajemen file system, dan eksekusi perintah OS secara interaktif.
+* **`cyberpunk.php` / `gray.php`**: Varian antarmuka shell grafis untuk pengujian kontrol taktis jarak jauh.
+* **`index.php` / `indexxx.php`**: Modul entri utama yang digunakan sebagai *landing gateway*.
 
----
+### 2. Privileges Escalation & Bypass Tools
+* **`SymlinkcPanel.php`**: Skrip analisis kerentanan symlink untuk memetakan konfigurasi akun dan file konfigurasi sensitif di lingkungan shared hosting.
+* **`bypallser.php` / `antidel.php`**: Modul pengujian untuk melewati pembatasan keamanan lokal, *safe mode*, atau fungsi pemblokiran sistem operasi.
+* **`.htaccess`**: Aturan konfigurasi tingkat server yang digunakan untuk memanipulasi *handler* PHP, menyembunyikan file, atau membelokkan akses URL.
 
-## 🛠️ Komponen Pengujian Lab
-
-Untuk melakukan analisis perilaku skrip di lingkungan lokal yang aman (sandbox), pastikan setup laboratorium Anda memenuhi kriteria berikut:
-
-| Komponen | Spesifikasi Laboratorium | Fungsi Analisis |
-| :--- | :--- | :--- |
-| **Interpreter** | PHP 7.4 / 8.x (Local Logging Enabled) | Memantau jejak eksekusi fungsi |
-| **Network Monitor** | Wireshark / Burp Suite | Menganalisis *outbound traffic* ke API eksternal |
-| **Sandbox Environment** | Docker / VirtualBox (Isolated LAN) | Mencegah penyebaran payload ke host utama |
+### 3. Connection Hooks & Utilities
+* **`call.php` / `code.php`**: Skrip callback eksternal untuk inisialisasi koneksi data.
+* **`obfuscator.php`**: Utilitas untuk menganalisis teknik penyamaran string guna menguji sensitivitas *Signature-based Antivirus* server.
 
 ---
 
-## 🛡️ Cetak Biru Deteksi & Remediasi (Defensive Guide)
+## 🔬 Metodologi Analisis Lab (Sandbox Setup)
 
-Berdasarkan struktur artefak yang dianalisis dalam proyek ini, berikut adalah pola deteksi (*Detection Signatures*) yang direkomendasikan untuk administrator server:
+Untuk menjalankan dan meneliti file-file di dalam repositori ini tanpa risiko kebocoran data atau infeksi jaringan:
 
-### 1. Deteksi Logika Obfuscation (YARA Rule Mockup)
-Aplikasi Web Application Firewall (WAF) atau scanner lokal dapat dikonfigurasi untuk mencari pola konversi karakter biner/heksadesimal berulang yang tidak wajar pada direktori publik:
-```yara
-rule Detect_Hex_Obfuscation {
-    strings:
-        $hex_pattern = /\\x[0-9a-fA-F]{2}/ repeated(10)$chr_loop = "foreach" ascii
-    condition:
-        $hex_pattern and$chr_loop
-}
+1. **Isolasi Total:** Gunakan lingkungan virtual (Docker Containers, VirtualBox, atau VMware) dengan kartu jaringan yang diatur ke mode **Host-Only** atau **Internal Network** (tanpa koneksi internet publik).
+2. **Audit Lalu Lintas (Traffic Auditing):** Pasang peralatan monitor seperti *Wireshark* atau *Burp Suite* pada host pengeksekusi untuk menganalisis payload keluar (*outbound telemetry*) yang dikirim melalui fungsi stream jaringan.
+3. **Runtime Monitor:** Aktifkan sistem audit log PHP (`error_log` dan `syslog`) untuk melihat bagaimana fungsi sistem seperti `system()`, `exec()`, atau `proc_open()` berinteraksi dengan kernel OS.
+
+---
+
+## 🛡️ Panduan Pertahanan (Defensive Blueprint)
+
+Bagi administrator jaringan dan *Blue Team*, berikut adalah langkah mitigasi taktis untuk mencegah dan mendeteksi keberadaan skrip pintu belakang sejenis di server produksi:
+
+* **Inisialisasi Proaktif (PHP Hardening):**
+  Matikan fungsi eksekusi berbahaya di dalam file `php.ini` sistem:
+  ```ini
+  disable_functions = exec, passthru, shell_exec, system, proc_open, popen, eval, symlink
